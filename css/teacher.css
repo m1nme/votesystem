@@ -1,0 +1,10 @@
+.column_container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#manager_login_form{
+    width: 26%;
+    margin-top: 60px;
+}
