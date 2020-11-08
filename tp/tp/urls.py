@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
+from django.contrib.staticfiles import views as my_view
 
 urlpatterns = [
     path('user/', include('user.urls')),
     path('teacher/', include('teacher.urls')),
+    url(r'^static/(?P<path>.*)$', my_view.serve)
 ]

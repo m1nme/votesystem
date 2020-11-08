@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.http import HttpResponse
 import json
-
 # Create your views here.
 def login(requests):
 	# return JsonResponse({"code": 401, "msg": "学生登陆测试接口"})
