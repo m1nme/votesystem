@@ -21,8 +21,12 @@ def vote(request):
 		sno = request.session['sno']
 		sname = request.session['name']
 		tno = request.session['tno']
+		# print(tno)
 		data = params['data']
-
+		for i in data:
+			if(tno == str(i)):
+				response = JsonResponse({"error_code": 1, "msg": "can not vote for your team"})
+				return ret(response)
 		res = models.vote_info.objects.filter(id=voteid).values()
 		if(len(res)==0):
 			response = JsonResponse({"error_code": 1, "msg": "voteId does not exist"})
@@ -30,7 +34,7 @@ def vote(request):
 		res = models.vote_result.objects.filter(voteid=voteid,sno=sno).values()
 		if(len(res)!=0):
 			response = JsonResponse({"error_code": 1, "msg": "you have already voted before"})
-			return ret(response)			
+			return ret(response)						
 		for i in data:
 			record = models.vote_result.objects.create(voteid=voteid,
 														sno=sno,

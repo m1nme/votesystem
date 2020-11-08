@@ -2,8 +2,34 @@
 <html>
 <head>
 	<title>test</title>
+	<script type="text/javascript" src="../jquery-1.11.0.min.js"></script>
 </head>
 <body>
-aassddsds
+aassd
+<script type="text/javascript">
+	$.ajax({
+            url: "http://127.0.0.1:8000/user/getVoteList/",
+            // dataType: "jsonp",
+            dataType: "json",
+            // crossDomain:true, //设置跨域为true
+            // xhrFields: {
+            //     withCredentials: true //默认情况下，标准的跨域请求是不会发送cookie的
+            // },
+            async:false,
+            type: 'GET',
+            success: function (re) {
+                resource = re
+                console.log(re)
+                return re
+            },
+            error: function (re) {
+                alert("fail")
+                console.log("fail")
+            }
+
+        })
+
+
+</script>
 </body>
 </html>
