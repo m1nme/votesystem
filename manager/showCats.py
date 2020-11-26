@@ -19,7 +19,6 @@ def showCats(request):
         result = verifyToken(token)
         if(result==True):
             data = []
-            cat = {}
             qs = models.cats.objects.filter(vet=TYPE)
             pgnt = Paginator(qs, pagesize)
             page = pgnt.page(pagenum)

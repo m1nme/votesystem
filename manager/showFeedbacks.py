@@ -6,7 +6,7 @@ from manager.verifyToken import verifyToken
 from django.core.paginator import Paginator, EmptyPage
 import math
 
-def showComments(request):
+def showFeedbacks(request):
     try:
         params = json.loads(request.body)
         token = params['token']
@@ -19,16 +19,17 @@ def showComments(request):
         result = verifyToken(token)
         if(result==True):
             data = []
-            qs = models.comments.objects.filter(vet=TYPE)
+            qs = models.feedbacks.objects.filter(vet=TYPE)
             pgnt = Paginator(qs, pagesize)
             page = pgnt.page(pagenum)
             for i in page:
-                comment = {
-                    "commentId": i.id,
-                    "commentContent": str(i.content)[0:10],
-                    "commentTime": i.modifytime
+                feedback = {
+                    "feedbackId": i.id,
+                    "feedbackContent": str(i.content)[0:10],
+                    "feedbackType": i.feedbacktype,
+                    "feedbackTime": i.time
                 }
-                data.append(comment)
+                data.append(feedback)
 
             response = JsonResponse({"error_code": 0, "msg": "success", "data": data, "nums": pgnt.count,"pages": max(1,math.ceil(pgnt.count // pagesize))})
             return ret(response)

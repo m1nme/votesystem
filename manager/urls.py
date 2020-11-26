@@ -4,6 +4,7 @@ from . import login,isLogin
 from . import showCats,getCatInfo,modifyCatInfo
 from . import showPosts,getPostInfo,modifyPostInfo
 from . import showComments,getCommentInfo,modifyCommentInfo
+from . import showFeedbacks,getFeedbackInfo,modifyFeedbackInfo
 urlpatterns = [
     path('login/', login.login),
     path('isLogin/', isLogin.isLogin),
@@ -19,4 +20,8 @@ urlpatterns = [
     path('showComments/', showComments.showComments),
     path('getCommentInfo/', getCommentInfo.getCommentInfo),
     path('modifyCommentInfo/', modifyCommentInfo.modifyCommentInfo),
+
+    path('showFeedbacks/', showFeedbacks.showFeedbacks),
+    path('getFeedbackInfo/', getFeedbackInfo.getFeedbackInfo),
+    path('modifyFeedbackInfo/', modifyFeedbackInfo.modifyFeedbackInfo),
 ]
